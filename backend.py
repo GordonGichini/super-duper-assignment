@@ -37,9 +37,46 @@ def test_smartphone():
     phone.charge_battery()
     print(phone)
 
+class PhotosApp:
+    def __init__(self):
+        self.number_of_photos = 0
+
+    def take_photo(self):
+        self.number_of_photos += 1
+        print("Photo taken!")
+
+    def delete_photo(self):
+        if self.number_of_photos > 0:
+            self.number_of_photos -= 1
+            print("Photo deleted!")
+
+    def calculate_storage_used(self):
+        total_mb = self.number_of_photos * 24
+        total_gb = total_mb / 1024
+        return total_gb 
+    
+    def __str__(self):
+        storage = self.calculate_storage_used()
+        return f"Photos App - Photos: {self.number_of_photos}, Storage Used: {storage:.2f}GB"
+    
+def test_photos_app():
+    app = PhotosApp()
+
+    # Take 5 photos
+    for i in range(5):
+        app.take_photo()
+
+    print(app)
+
+    # Delete 2 photos
+    for i in range(1):
+        app.delete_photo()
+
+    print(app)
+
 
 if __name__ == "__main__":
     test_smartphone()
+    test_photos_app()
 
-    
     
